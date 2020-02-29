@@ -22,27 +22,25 @@ bool my_compare(int idx, vector<int>& searched_idx)
 	return true;
 }
 
-void sortfun(vector<friends> &fri_vec)
+void sortfun(vector<friends> &fri_vec2)
 {
+	// 对找到的节点按编号降序排列，如果编号相同则按权重降序排列
 	friends fri_temp;
-	for (int row = 0; row < fri_vec.size() - 1; row++)
+	for (int row = 0; row < fri_vec2.size() - 1; row++)
 	{
-		for (int col = 0; col < fri_vec.size() - 1 - row; col++)
+		for (int col = 0; col < fri_vec2.size() - 1 - row; col++)
 		{
-			if ((fri_vec[col].idx < fri_vec[col + 1].idx) || 
-				(fri_vec[col].idx = fri_vec[col + 1].idx && fri_vec[col].weight < fri_vec[col + 1].weight))
+			if ((fri_vec2[col].idx < fri_vec2[col + 1].idx) || 
+				(fri_vec2[col].idx = fri_vec2[col + 1].idx && fri_vec2[col].weight < fri_vec2[col + 1].weight))
 			{
-				fri_temp = fri_vec[col];
-				fri_vec[col] = fri_vec[col + 1];
-				fri_vec[col + 1] = fri_temp;
+				fri_temp = fri_vec2[col];
+				fri_vec2[col] = fri_vec2[col + 1];
+				fri_vec2[col + 1] = fri_temp;
 			}
 		}
 	}
-
 	return;
 }
-
-
 
 bool search_friend(int** r, int m, vector<friends>& fri_vec1, vector<int>& searched_idx)
 {
